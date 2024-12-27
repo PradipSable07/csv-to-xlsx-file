@@ -31,14 +31,14 @@ Prerequisites
 
  1. Clone the repository:
 
-```
+```bash
 git clone <https://github.com/your-repo/backend-file-upload.git>
 cd backend-file-upload
 ```
 
 2. Install dependencies:
 
-```
+```bash
 npm install
 ```
 
@@ -46,13 +46,13 @@ npm install
 
  • Development mode with Nodemon:
 
-```
+```bash
 npm run dev
 ```
 
  • Production mode:
 
-```
+```bash
 npm start
 ```
 
@@ -60,11 +60,12 @@ npm start
 
 1. File Upload Endpoint
 
-```
+```bash
 Route: /api/files/upload
 Method: POST
 ```
-Description: Handles the upload of an XLSX and a CSV file, processes them, and returns the paths for the enriched outputs.
+
+**Description**: Handles the upload of an XLSX and a CSV file, processes them, and returns the paths for the enriched outputs.
 
 ### Request
 
@@ -77,7 +78,7 @@ Description: Handles the upload of an XLSX and a CSV file, processes them, and r
 
 - Success (200 OK):
 
-```
+```bash
 {
   "message": "Files processed successfully",
   "updatedSheetPath": "uploads/UpdatedMasterSheet.xlsx",
@@ -87,14 +88,15 @@ Description: Handles the upload of an XLSX and a CSV file, processes them, and r
 
 - Error (400/500):
 
-```
+```bash
 {
   "message": "Error processing files: <error details>"
 }
 ```
-Project Structure
 
-```
+### Project Structure
+
+```bash
 backend/
 ├── controllers/
 │   └── csv-to-xlsx.controller.js     # Main logic for processing files
@@ -109,7 +111,7 @@ backend/
 └── uploads/                          # Directory for storing uploaded and output files
 ```
 
-Key Modules and Utilities
+### Key Modules and Utilities
 
 1. csvToXlsx Controller
 
@@ -135,44 +137,46 @@ Key Modules and Utilities
 
 Create a .env file with the following variables:
 
-```
+```bash
 PORT=3000
 ```
 
-2.File Uploads: Uploaded files are temporarily stored in the uploads/ directory using Multer.
+2.**File Uploads**: Uploaded files are temporarily stored in the uploads/ directory using Multer.
 
-Key Libraries
-1.Core Frameworks:
+### Key Libraries
+
+1.**Core Frameworks**:
 
 - Express: Web framework for handling routes and middleware.
 - Multer: Middleware for handling file uploads.
 
-2.File Parsing:
+2.**File Parsing**:
 
 - xlsx: Library for reading and writing Excel files.
 - csv-parser: Parses CSV files into JSON.
 
-3.PDF Generation:
+3.**PDF Generation**:
 
 - puppeteer: Headless browser for generating PDFs.
 
-4.Development Tools:
+4.**Development Tools**:
 
 - dotenv: Loads environment variables.
 - nodemon: Automatically restarts the server during development.
 
-Error Handling
-1.Validation Errors:
+### Error Handling
+
+1.**Validation Errors**:
 
 - If the wrong file types are uploaded:
 
-```
+```bash
 { "message": "Both Master Sheet and Data files are required." }
 ```
 
 - If the XLSX sheet name is missing:
 
-```
+```bash
 { "message": "Sheet with name '<sheetName>' not found." }
 ```
 
@@ -180,13 +184,13 @@ Error Handling
 
 - Any unexpected errors during processing are logged and returned as:
 
-```
+```bash
 { "message": "Error processing files: <error details>" }
 ```
 
 #### Sample Request Using cURL
 
-```
+```bash
 curl -X POST http://localhost:3000/api/files/upload \
   -H "Content-Type: multipart/form-data" \
   -F "files=@path/to/masterSheet.xlsx" \
@@ -215,7 +219,3 @@ curl -X POST http://localhost:3000/api/files/upload \
 ### Contributing
 
 Contributions are welcome! Please fork the repository, make your changes, and create a pull request.
-
-### License
-
-This project is licensed under the MIT License.

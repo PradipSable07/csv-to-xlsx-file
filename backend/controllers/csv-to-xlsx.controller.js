@@ -55,7 +55,7 @@ export const csvToXlsx = async (req, res) => {
           if (match) {
             const enrichedRow = {
               ...row,
-              'Glass (Sqm)': match['Area'], // Move Area value to "Glass (Sqm)" if needed
+              'Glass (Sqm)': match['Area'], // Move Area value to "Glass (Sqm)" column
               
             };
   
@@ -96,7 +96,6 @@ export const csvToXlsx = async (req, res) => {
         // matchedData: enrichedData,
         updatedSheetPath: updatedMasterSheetPath,
         pdfPath: pdfPath,
-        newPdfPath: newPdfPath
       });
     } catch (error) {
       res.status(500).json({ message: `Error processing files: ${error.message}` });

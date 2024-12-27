@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
-import fs from 'fs';
-import path from 'path';
+
 
 /**
  * Generates a PDF from the enriched data using Puppeteer.

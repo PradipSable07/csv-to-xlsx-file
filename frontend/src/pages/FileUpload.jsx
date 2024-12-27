@@ -21,7 +21,7 @@ const FileUpload = () => {
     onSuccess: (data) => {
       setIsUploading(false);
       toast.success("Files uploaded successfully!");
-      console.log("Enriched Data:", data.matchedData);
+      console.log('data',data)
       console.log("Download Updated Master Sheet:", data.updatedSheetPath);
       console.log("Download PDF:", data.pdfPath);
     },
@@ -66,26 +66,26 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center  bg-sky-50  space-y-8 lg:min-w-7xl w-full">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen space-y-8 bg-sky-50 lg:min-w-7xl">
       <h1 className="text-3xl font-bold text-gray-700">Upload Master Sheet and Data</h1>
       
-      <div className=" w-full  flex gap-2 h-full max-w-6xl justify-center items-center">
+      <div className="flex items-center justify-center w-full h-full max-w-6xl gap-2 ">
         {/* XLSX Upload */}
-        <div className="relative w-full h-80   p-2  ">
+        <div className="relative w-full p-2 h-80 ">
           <label htmlFor="xlsx-upload" className="block mb-2 text-sm font-medium text-gray-700">
             Upload XLSX File
           </label>
-          <div className="flex items-center justify-center w-full h-full  bg-gray-50">
+          <div className="flex items-center justify-center w-full h-full bg-gray-50">
             <label
               htmlFor="xlsx-upload"
-              className="flex items-center justify-center w-full h-full  border border-gray-200 rounded-lg cursor-pointer bg-gray-50 relative"
+              className="relative flex items-center justify-center w-full h-full border border-gray-200 rounded-lg cursor-pointer bg-gray-50"
             >
               
                
             
                 <div className={`flex items-center justify-center w-full h-full   shadow-inner shadow-[#7b80c1]/20 backdrop-blur-[7.5px] flex-col rounded-lg  border-white/20 transition-all duration-300 p-4 ${selectedFiles?.xlsx ? "bg-violet-50 text-gray-900 " : "bg-gray-50 text-gray-500"}`}>
                   <BsFiletypeXlsx className="w-24 h-24 " />
-                  <span className="text-sm text-bold  ">{selectedFiles.xlsx ?`${selectedFiles?.xlsx?.name}` : "Upload XLSX File"}</span>
+                  <span className="text-sm text-bold ">{selectedFiles.xlsx ?`${selectedFiles?.xlsx?.name}` : "Upload XLSX File"}</span>
                 </div>
               
               <input
@@ -101,14 +101,14 @@ const FileUpload = () => {
         </div>
 
         {/* CSV Upload */}
-        <div className="relative w-full h-80 p-2  ">
+        <div className="relative w-full p-2 h-80 ">
           <label htmlFor="csv-upload" className="block mb-2 text-sm font-medium text-gray-700">
             Upload CSV File
           </label>
-          <div className="flex items-center justify-center w-full h-full  bg-gray-50">
+          <div className="flex items-center justify-center w-full h-full bg-gray-50">
             <label
               htmlFor="csv-upload"
-              className="flex items-center justify-center w-full h-full border border-gray-200 rounded-lg cursor-pointer bg-gray-50 relative"
+              className="relative flex items-center justify-center w-full h-full border border-gray-200 rounded-lg cursor-pointer bg-gray-50"
             >
               
                
@@ -131,8 +131,8 @@ const FileUpload = () => {
         </div>
       </div>       
        {/* Sheet Name Input */}
-      <div className=" max-w-6xl mx-auto flex gap-2 items-center">
-          <label htmlFor="sheetName" className="  text-sm font-medium   text-gray-700">
+      <div className="flex items-center max-w-6xl gap-2 mx-auto ">
+          <label htmlFor="sheetName" className="text-sm font-medium text-gray-700 ">
             XLSX File Sheet Name: 
           </label>
           <input
@@ -141,7 +141,7 @@ const FileUpload = () => {
             name="sheetName"
             value={formData.sheetName}
             onChange={handleInputChange}
-            className=" p-2 font-medium border rounded-lg border-gray-300  bg-slate-50 text-sm text-slate-800 focus:outline-sky-300 focus:ring-none focus:ring-sky-500  active:border-transparent min-w-2xl mx-auto"
+            className="p-2 mx-auto text-sm font-medium border border-gray-300 rounded-lg bg-slate-50 text-slate-800 focus:outline-sky-300 focus:ring-none focus:ring-sky-500 active:border-transparent min-w-2xl"
             placeholder="Enter the XLSX file sheet name"
           />
         </div>
@@ -155,9 +155,9 @@ const FileUpload = () => {
       </button>
 
       {uploadMutation.isSuccess && (
-        <div className="mt-8  text-center">
+        <div className="mt-8 text-center">
           <h3 className="text-2xl font-light ">Files Processed Successfully</h3>
-          <div className="flex gap-2 justify-evenly w-full items-center mt-4">
+          <div className="flex items-center w-full gap-2 mt-4 justify-evenly">
           <a
             href={`http://localhost:3000/${uploadMutation.data.updatedSheetPath}`}
             download
